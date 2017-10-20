@@ -1,12 +1,42 @@
-  <div class="container">
-  <div class="jumbotron">
-    <h1>Welcome</h1>
-    <h2>Angular & Bootstrap Demo</h2>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Status</div>
-    <div class="panel-body">
-      <h3>{{title}}</h3>
+<div class="container">
+
+      <div class="jumbotron" id="lead-speak">
+        <div class="row">
+          <div class="col col-sm-8 col-lg-8 col-md-8">
+        <h1 class="display-3">Counter Service</h1>
+        <p class="lead">countmatic.io provides webservices to count stuff.</p>
+        <hr class="my-4">
+        <p>We keep your numbers save, give you increments, states and resets. All of this as service without any
+          registration</p>
+
+      </div>
+          <div class="col col-sm-4 col-lg-4 col-md-4">
+            <img class="img-responsive" src="/assets/images/striche5.png" width="400" alt="countmatic logo">
+          </div>
     </div>
+
   </div>
 </div>
+
+<h1>Get started with the webservice that counts</h1>
+<p>3 minutes to get started with our service</p>
+<h2>Request a new counter</h2>
+<pre><code>PUT https://api.countmatic.io/counter?name=MyCounter <br>
+Result: &#123;'token':'ehdu75gdj#98hjdt'&#125;</code></pre>
+
+<h2>Get the current number of your counter</h2>
+<pre><code>GET https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+Result: &#123;'MyCounter':'0'&#125;</code></pre>
+
+<h2>Increment your counter</h2>
+<pre><code>POST https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+Result: &#123;'MyCounter':'1'&#125;</code></pre>
+
+<h2>Delete your counter</h2>
+<pre><code>DELETE https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+Result: &#123;'MyCounter':'0'&#125;</code></pre>
+
+<h2>If you want more...</h2>
+<p>What about counters that do not start at 0, or that want different increments? Can I also use countmatic.io just with some GETs?
+Yes. Read our API docs (we use Open API Spec 3) for more details.</p>
+<a href="#" class="btn btn-primary">Learn more</a>

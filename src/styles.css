@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #677077;
+}
+
+nav.navbar {
+  background-color: #252839;
+  height: 60px;
+}
+
+div#main-content {
+  padding-top: 65px;
+}
+
+#lead-speak {
+  margin-top: 20px;
+  background-color: #677077;
+  border: 0;
+}
