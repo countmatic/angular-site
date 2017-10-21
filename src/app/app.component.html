@@ -1,13 +1,12 @@
-<div class="container">
 
       <div class="jumbotron" id="lead-speak">
         <div class="row">
           <div class="col col-sm-8 col-lg-8 col-md-8">
-        <h1 class="display-3">Counter Service</h1>
+        <h1 class="display-3">Count Service</h1>
         <p class="lead">countmatic.io provides webservices to count stuff.</p>
         <hr class="my-4">
         <p>We keep your numbers save, give you increments, states and resets. All of this as service without any
-          registration</p>
+          registration. Our numbers are needed all around the world.</p>
 
       </div>
           <div class="col col-sm-4 col-lg-4 col-md-4">
@@ -16,27 +15,31 @@
     </div>
 
   </div>
-</div>
 
 <h1>Get started with the webservice that counts</h1>
 <p>3 minutes to get started with our service</p>
 <h2>Request a new counter</h2>
-<pre><code>PUT https://api.countmatic.io/counter?name=MyCounter <br>
+<pre><code>GET https://api.countmatic.io/v1/counter/new?name=MyCounter
 Result: &#123;'token':'ehdu75gdj#98hjdt'&#125;</code></pre>
 
 <h2>Get the current number of your counter</h2>
-<pre><code>GET https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+<pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt <br>
 Result: &#123;'MyCounter':'0'&#125;</code></pre>
 
 <h2>Increment your counter</h2>
-<pre><code>POST https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+<pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt <br>
 Result: &#123;'MyCounter':'1'&#125;</code></pre>
 
 <h2>Delete your counter</h2>
-<pre><code>DELETE https://api.countmatic.io/counter?token=ehdu75gdj#98hjdt <br>
+<pre><code>GET https://api.countmatic.io/v1/counter/remove?token=ehdu75gdj#98hjdt <br>
 Result: &#123;'MyCounter':'0'&#125;</code></pre>
 
-<h2>If you want more...</h2>
-<p>What about counters that do not start at 0, or that want different increments? Can I also use countmatic.io just with some GETs?
-Yes. Read our API docs (we use Open API Spec 3) for more details.</p>
+<h2>But there is more...</h2>
+      <p>Read our Open API Spec. We also can</p>
+  <ul>
+        <li>Start with an offset.</li>
+        <li>Increment arbitrary counts.</li>
+        <li>Manage your group of counters.</li>
+      </ul>
+  <p>And much more.</p>
 <a href="#" class="btn btn-primary">Learn more</a>
