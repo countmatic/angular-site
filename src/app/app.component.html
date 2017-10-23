@@ -24,15 +24,15 @@ Result: &#123;'token':'ehdu75gdj#98hjdt'&#125;</code></pre>
 
 <h2>Get the current number of your counter</h2>
 <pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt <br>
-Result: &#123;'MyCounter':'0'&#125;</code></pre>
+Result: &#123;'name':'MyCounter', 'count':'0'&#125;</code></pre>
 
 <h2>Increment your counter</h2>
 <pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt <br>
-Result: &#123;'MyCounter':'1'&#125;</code></pre>
+Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
 
-<h2>Delete your counter</h2>
-<pre><code>GET https://api.countmatic.io/v1/counter/remove?token=ehdu75gdj#98hjdt <br>
-Result: &#123;'MyCounter':'0'&#125;</code></pre>
+<h2>Reset your counter</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/reset?token=ehdu75gdj#98hjdt <br>
+Result: &#123;'name':'MyCounter', 'count':'0'&#125;</code></pre>
 
 <h2>But there is more...</h2>
       <p>Read our Open API Spec. We also can</p>
