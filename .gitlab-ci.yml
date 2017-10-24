@@ -1,7 +1,7 @@
 stages:
   - build
 
-image: node
+image: alexsuch/angular-cli
 build:
   stage: build
   script:
