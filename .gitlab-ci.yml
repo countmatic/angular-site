@@ -1,16 +1,22 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: alexsuch/angular-cli
+
 deploy to production:
+  stage: deploy
   environment: production
-  image: alexsuch/angular-cli
   when: manual
   script:
-    - 'npm install'
-    - 'ng build --prod'
+    - 'cp -r dist /tmp'
   only:
   - master
 
 build:
+  stage: build
   environment: staging
-  image: alexsuch/angular-cli
   script:
     - 'npm install'
     - 'ng build --prod'
