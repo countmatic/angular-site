@@ -15,12 +15,12 @@ div#main-content {
 
 #lead-speak {
   margin-top: 20px;
-  background-color: rgba(189, 183, 107, 0.59);
+  background-color: rgba(195, 192, 146, 0.59);
   border: 2px solid #353849;
 }
 
 #lead-speak:hover {
-  background-color: rgba(189, 183, 107, 0.70);
+  background-color: rgba(195, 192, 146, 0.70);
 }
 
 footer div.social a {
