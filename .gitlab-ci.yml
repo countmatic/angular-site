@@ -1,0 +1,9 @@
+stages:
+  - build
+
+image: node
+build:
+  stage: build
+  script:
+    - 'npm install'
+    - 'ng build'
