@@ -40,6 +40,6 @@ deploy to production:
   environment: production
   when: manual
   script:
-    - 'scp -r dist rainer@nextos-proxiss.srv1.de:/home/rainer'
+    - 'scp -r dist rainer@nextos.proxiss-srv1.de:/home/rainer'
   only:
   - master
