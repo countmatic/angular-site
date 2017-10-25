@@ -5,6 +5,18 @@ stages:
 
 image: alexsuch/angular-cli
 
+build:
+  stage: build
+  environment: staging
+  artifacts:
+    name: cm-website
+    expire_in: 12 hrs
+    paths:
+    - dist/
+  script:
+    - 'npm install'
+    - 'ng build --prod'
+
 deploy to production:
   stage: deploy
   environment: production
@@ -13,10 +25,3 @@ deploy to production:
     - 'cp -r dist /tmp'
   only:
   - master
-
-build:
-  stage: build
-  environment: staging
-  script:
-    - 'npm install'
-    - 'ng build --prod'
