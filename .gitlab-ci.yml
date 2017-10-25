@@ -1,7 +1,7 @@
 before_script:
   # Install ssh-agent if not already installed, it is required by Docker.
   # (change apt-get to yum if you use a CentOS-based image)
-  - 'which ssh-agent || ( apk update -y && apk add openssh-client -y )'
+  - 'which ssh-agent || ( apk update  && apk add openssh-client  )'
 
   # Run ssh-agent (inside the build environment)
   - eval $(ssh-agent -s)
@@ -29,6 +29,7 @@ build:
   artifacts:
     name: cm-website
     expire_in: 12 hrs
+    when: manual
     paths:
     - dist/
   script:
@@ -40,6 +41,6 @@ deploy to production:
   environment: production
   when: manual
   script:
-    - 'scp -r dist rainer@nextos.proxiss-srv1.de:/home/rainer'
+    - 'scp -P 27 -r dist rainer@nextos.proxiss-srv1.de:/home/rainer'
   only:
   - master
