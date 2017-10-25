@@ -8,7 +8,7 @@ before_script:
 
   # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
   - echo "$SSH_PRIVATE_KEY" | ssh-add -
-  #- echo "$SSH_PRIVATE_KEY" > ~/myKey
+  
   # For Docker builds disable host key checking. Be aware that by adding that
   # you are suspectible to man-in-the-middle attacks.
   # WARNING: Use this only with the Docker executor, if you use it with shell
@@ -26,7 +26,6 @@ image: alexsuch/angular-cli
 build:
   stage: build
   environment: staging
-  when: manual
   artifacts:
     name: cm-website
     expire_in: 12 hrs
@@ -41,6 +40,6 @@ deploy to production:
   environment: production
   when: manual
   script:
-    - 'scp -P 27 -r dist rainer@nextos.proxiss-srv1.de:/home/rainer'
+    - 'scp -P 27 -r dist/* rainer@nextos.proxiss-srv1.de:/home/docker/pn7/countmatic/'
   only:
   - master
