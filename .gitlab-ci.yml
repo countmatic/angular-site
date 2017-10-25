@@ -26,10 +26,10 @@ image: alexsuch/angular-cli
 build:
   stage: build
   environment: staging
+  when: manual
   artifacts:
     name: cm-website
     expire_in: 12 hrs
-    when: manual
     paths:
     - dist/
   script:
