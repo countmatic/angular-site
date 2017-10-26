@@ -1,0 +1,45 @@
+before_script:
+  # Install ssh-agent if not already installed, it is required by Docker.
+  # (change apt-get to yum if you use a CentOS-based image)
+  - 'which ssh-agent || ( apk update  && apk add openssh-client  )'
+
+  # Run ssh-agent (inside the build environment)
+  - eval $(ssh-agent -s)
+
+  # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+  - echo "$SSH_PRIVATE_KEY" | ssh-add -
+  
+  # For Docker builds disable host key checking. Be aware that by adding that
+  # you are suspectible to man-in-the-middle attacks.
+  # WARNING: Use this only with the Docker executor, if you use it with shell
+  # you will overwrite your user's SSH config.
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  
+stages:
+  - build
+  - test
+  - deploy
+
+image: alexsuch/angular-cli
+
+build:
+  stage: build
+  environment: staging
+  artifacts:
+    name: cm-website
+    expire_in: 12 hrs
+    paths:
+    - dist/
+  script:
+    - 'npm install'
+    - 'ng build --prod'
+
+deploy to production:
+  stage: deploy
+  environment: production
+  when: manual
+  script:
+    - 'scp -P 27 -r dist/* rainer@nextos.proxiss-srv1.de:/home/docker/pn7/countmatic/'
+  only:
+  - master
