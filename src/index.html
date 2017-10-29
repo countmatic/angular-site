@@ -46,5 +46,67 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<noscript>
+  <h1 class="display-3">Count Service</h1>
+  <p class="lead">countmatic.io provides webservices to count.</p>
+  <hr class="my-4">
+  <p>We keep your enumerators save, give you increments, current readings and resets. All of this as service without
+    any
+    registration. Our meters are in use all around the world to count.</p>
+
+  <div class="col col-sm-4 col-lg-4 col-md-4">
+    <img class="img-responsive" src="/assets/images/striche5.png" width="400" alt="countmatic logo">
+  </div>
+
+  <h1>Get started with the webservice that counts</h1>
+  <p>3 minutes to get started with our service</p>
+  <h2>Request a new counter</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/new?name=MyCounter
+Result: &#123;'token':'ehdu75gdj#98hjdt'&#125;</code></pre>
+  <p>This creates a new counter for you and returns your access token.</p>
+
+  <h2>Get the current reading of your counter</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt
+Result: [&#123;'name':'MyCounter', 'count':'0'&#125;]</code></pre>
+  <p>This returns the name and current reading of the requested counter. It is an array because it can return more than
+    one counter.</p>
+
+  <h2>Increment your counter</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
+  <p>This increments your counter and returns the new value.</p>
+
+  <h2>Decrement your counter</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/previous?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'0'&#125;</code></pre>
+  <p>This decrements your counter and returns the new value.</p>
+
+  <h2>Reset your counter</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/reset?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
+  <p>This resets your counter to 1.</p>
+
+  <H2>Request read-only token for your counter</H2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/readonly?token=ehdu75gdj#98hjdt
+Result: &#123;'token':'h7ZtR5gdjKKKhjdt'&#125;</code></pre>
+  <p>This token can only be used for the [current] call. Give it to people or machines that need to
+    read-only your counter.</p>
+
+  <h1>Multicounter - More counters for one token</h1>
+  <p>You can create new counters with new tokens. But you can also create another counter for your existing token.</p>
+  <h2>Create another counter for your token</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/add?token=ehdu75gdj#98hjdt&name=MyOtherCounter
+Result: &#123;'name':'MyOtherCounter', 'count':'0'&#125;</code></pre>
+  <p>This adds a new counter to your existing token. If you want to operate on one single counter of your multicounter,
+    you
+    have to specify the name now:</p>
+  <pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt&name=MyOtherCounter
+Result: &#123;'name':'MyOtherCounter', 'count':'1'&#125;</code></pre>
+  <h2>Get the current reading of your multicounters</h2>
+  <pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt
+Result: [&#123;'name':'MyCounter', 'count':'1'&#125;, &#123;'name':'MyOtherCounter', 'count':'1'&#125;]</code></pre>
+  <p>This returns the name and current reading of all your enumerators for that token now.</p>
+
+</noscript>
 </body>
 </html>

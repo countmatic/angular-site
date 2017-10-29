@@ -53,7 +53,7 @@ Result: &#123;'token':'h7ZtR5gdjKKKhjdt'&#125;</code></pre>
 <h1>Multicounter - More counters for one token</h1>
 <p>You can create new counters with new tokens. But you can also create another counter for your existing token.</p>
 <h2>Create another counter for your token</h2>
-<pre><code>GET https://api.countmatic.io/v1/counter/more?token=ehdu75gdj#98hjdt&name=MyOtherCounter
+<pre><code>GET https://api.countmatic.io/v1/counter/add?token=ehdu75gdj#98hjdt&name=MyOtherCounter
 Result: &#123;'name':'MyOtherCounter', 'count':'0'&#125;</code></pre>
 <p>This adds a new counter to your existing token. If you want to operate on one single counter of your multicounter,
   you
