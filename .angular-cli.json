@@ -3,6 +3,9 @@
   "project": {
     "name": "cm-website"
   },
+  "assets": [
+    "assets"
+  ],
   "apps": [
     {
       "root": "src",
