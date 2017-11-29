@@ -35,6 +35,7 @@
 <footer>
 <hr>
 <div class="text-center center-block social">
+  Project lead: Rainer Feike, Germany.
   <br />
   <a href="https://twitter.com/countmatic"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
   <a href="https://plus.google.com/+countmatic-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
@@ -76,15 +77,15 @@ Result: [&#123;'name':'MyCounter', 'count':'0'&#125;]</code></pre>
   <p>This returns the name and current reading of the requested counter. It is an array because it can return more than
     one counter.</p>
 
-  <h2>Increment your counter</h2>
+  <h2>Increment your counter (atomic)</h2>
   <pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt
 Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
-  <p>This increments your counter and returns the new value.</p>
+  <p>This increments your counter and returns the new value in an atomic, thread-save operation.</p>
 
-  <h2>Decrement your counter</h2>
+  <h2>Decrement your counter (atomic)</h2>
   <pre><code>GET https://api.countmatic.io/v1/counter/previous?token=ehdu75gdj#98hjdt
 Result: &#123;'name':'MyCounter', 'count':'0'&#125;</code></pre>
-  <p>This decrements your counter and returns the new value.</p>
+  <p>This decrements your counter and returns the new value in an atomic, threadsave operation.</p>
 
   <h2>Reset your counter</h2>
   <pre><code>GET https://api.countmatic.io/v1/counter/reset?token=ehdu75gdj#98hjdt
