@@ -1,0 +1,86 @@
+<div class="jumbotron" id="lead-speak">
+  <div class="row">
+    <div class="col col-sm-8 col-lg-8 col-md-8">
+      <h1 class="display-3">Count Service</h1>
+      <p class="lead">countmatic.io provides webservices to count.</p>
+      <hr class="my-4">
+      <p>We keep your enumerators save, give you increments, current readings and resets. All of this as service without
+        any
+        registration. Our meters are in use all around the world to count.</p>
+
+    </div>
+    <div class="col col-sm-4 col-lg-4 col-md-4">
+      <img class="img-responsive" src="/assets/images/striche5.png" width="400" alt="countmatic logo">
+    </div>
+  </div>
+
+</div>
+
+<h1>Open API</h1>
+<p>countmatic is open and open for discussions:</p>
+<ul>
+  <li><a href="https://github.com/countmatic/openapi" class="btn-primary">API at Github, please file issues here.</a>
+  </li>
+  <li><a href="https://twitter.com/countmatic" class="btn-primary">Follow countmatic at Twitter</a></li>
+</ul>
+
+<h1>Get started with the webservice that counts</h1>
+<p>3 minutes to get started with our service</p>
+<h2>Request a new counter</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/new?name=MyCounter
+Result: &#123;'token':'ehdu75gdj#98hjdt'&#125;</code></pre>
+<p>This creates a new counter for you and returns your access token.</p>
+
+<h2>Get the current reading of your counter</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt
+Result: [&#123;'name':'MyCounter', 'count':'0'&#125;]</code></pre>
+<p>This returns the name and current reading of the requested counter. It is an array because it can return more than
+  one counter. If you got a token, you may use our <a routerLink="/online-reader" routerLinkActive="active">online
+    reader here</a>
+  to view your values.</p>
+
+<h2>Increment your counter (atomic op)</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
+<p>This increments your counter and returns the new value in an atomic, thread-save operation.</p>
+
+<h2>Decrement your counter (atomic op)</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/previous?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'0'&#125;</code></pre>
+<p>This decrements your counter and returns the new value in an atomic, threadsave operation.</p>
+
+<h2>Reset your counter</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/reset?token=ehdu75gdj#98hjdt
+Result: &#123;'name':'MyCounter', 'count':'1'&#125;</code></pre>
+<p>This resets your counter to 1.</p>
+
+<H2>Request read-only token for your counter</H2>
+<pre><code>GET https://api.countmatic.io/v1/counter/readonly?token=ehdu75gdj#98hjdt
+Result: &#123;'token':'h7ZtR5gdjKKKhjdt'&#125;</code></pre>
+<p>This token can only be used for the [current] call. Give it to people or machines that need to
+  read-only your counter.</p>
+
+<h1>Multicounter - More counters for one token</h1>
+<p>You can create new counters with new tokens. But you can also create another counter for your existing token.</p>
+<h2>Create another counter for your token</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/add?token=ehdu75gdj#98hjdt&name=MyOtherCounter
+Result: &#123;'name':'MyOtherCounter', 'count':'0'&#125;</code></pre>
+<p>This adds a new counter to your existing token. If you want to operate on one single counter of your multicounter,
+  you
+  have to specify the name now:</p>
+<pre><code>GET https://api.countmatic.io/v1/counter/next?token=ehdu75gdj#98hjdt&name=MyOtherCounter
+Result: &#123;'name':'MyOtherCounter', 'count':'1'&#125;</code></pre>
+<h2>Get the current reading of your multicounters</h2>
+<pre><code>GET https://api.countmatic.io/v1/counter/current?token=ehdu75gdj#98hjdt
+Result: [&#123;'name':'MyCounter', 'count':'1'&#125;, &#123;'name':'MyOtherCounter', 'count':'1'&#125;]</code></pre>
+<p>This returns the name and current reading of all your enumerators for that token now.</p>
+
+<h2>But there is more...</h2>
+<p>Read our Open API Spec. We also can</p>
+<ul>
+  <li>Start with an offset.</li>
+  <li>Increment arbitrary counts.</li>
+  <li>Manage your group of counters.</li>
+</ul>
+<p>And much more.</p>
+<a href="/assets/docs/index.html" class="btn btn-primary">Learn more</a>
