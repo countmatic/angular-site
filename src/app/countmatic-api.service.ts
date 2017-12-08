@@ -12,8 +12,8 @@ export class CountmaticApiService {
   getCurrentReading(token: string): Promise<CounterModel[]> {
     return this.http.get('https://api.countmatic.io/v1/counter/current?token=' + token)
       .toPromise()
-      .then(response => response.json() as CounterModel[])
-      .catch((err) => this.handleError(err));
+      .then(response => response.json() as CounterModel[]);
+    //.catch((err) => this.handleError(err));
   }
 
   handleError(err) {

@@ -2,6 +2,6 @@
 <p>You can use this tool to get the current readings of a countmatic counter token.</p>
 
 <app-token-input-form (onTokenChanged)="onTokenChanged($event)"></app-token-input-form>
-TODO: Token: {{ token }}
+<div><p class="feedback">Last feedback: {{ feedback }}</p></div>
 <app-current-readings-table [counters]="countersModel"></app-current-readings-table>
 

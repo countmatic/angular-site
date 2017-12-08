@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true,}) // <-- debugging purposes only TODO ausbauen
+      {enableTracing: false,}) // <-- true for debugging purposes only
   ],
   bootstrap: [AppComponent],
   providers: []
