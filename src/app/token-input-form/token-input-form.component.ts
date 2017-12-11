@@ -10,12 +10,16 @@ export class TokenInputFormComponent implements OnInit {
 
   submitted = false;
   token = '';
+  store = false;
+
   @Output() onTokenChanged = new EventEmitter<string>();
 
   constructor() {
   }
 
   ngOnInit() {
+    //localStorage.getItem("cm-tokens");
+
   }
 
   onSubmit() {
