@@ -5,10 +5,11 @@
   </div>
   <div class="form-group">
     <input type="checkbox" class="filled-in" id="store" [(ngModel)]="store" checked="checked" name="store">
-    <label for="store">store this token locally (currently unused)</label>
+    <label for="store">store this token locally (for later re-use)</label>
   </div>
 
 
   <button type="submit" class="btn btn-success">Submit</button>
+  <button *ngIf="this.oldTokens.length > 0" class="btn btn-info">Pick from previous</button>
 
 </form>
