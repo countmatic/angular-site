@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CounterModel} from '../counter-model';
 import {CountmaticApiService} from '../countmatic-api.service';
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
 @Component({
   selector: 'app-online-reader',
@@ -15,7 +16,9 @@ export class OnlineReaderComponent implements OnInit {
 
   countersModel: CounterModel[] = [];
 
-  constructor(private countmaticApiService: CountmaticApiService) {
+  constructor(private countmaticApiService: CountmaticApiService,
+              private router: Router, private activatedRoute: ActivatedRoute) {
+    console.log("Hello OnlineReaderComponent constructor");
   }
 
   private err2Text(status: number): string {
@@ -40,6 +43,7 @@ export class OnlineReaderComponent implements OnInit {
 
 
   onTokenChanged(token: string) {
+    console.log("Hello OnlineReaderComponent onTokenChanged");
     this.token = token;
     this.countmaticApiService.getCurrentReading(this.token)
       .then((c: CounterModel[]) => {
@@ -53,6 +57,17 @@ export class OnlineReaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Hello OnlineReaderComponent ngOnInit");
+    let token = null;
+    this.activatedRoute.queryParamMap.subscribe((next: ParamMap) => {
+      token = next.get("token")
+      if (token) {
+        console.log(token);
+        this.onTokenChanged(token);
+      } else {
+        console.log("no token given in url");
+      }
+    });
   }
 
 }
