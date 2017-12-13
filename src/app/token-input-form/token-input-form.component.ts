@@ -40,6 +40,10 @@ export class TokenInputFormComponent implements OnInit {
     });
   }
 
+  setToken(t: string) {
+    this.token = t;
+  }
+
   onSubmit() {
     console.log("Hello TokenInputFormComponent onSubmit");
     if (this.store) {
