@@ -8,9 +8,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class TokenInputFormComponent implements OnInit {
 
-  private token = '';
-  private store = false;
-  private oldTokens : string[];
+  token = '';
+  store = false;
+  oldTokens: string[];
 
   @Output() onTokenChanged = new EventEmitter<string>();
 
