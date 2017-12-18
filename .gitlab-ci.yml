@@ -40,6 +40,6 @@ deploy to production:
   environment: production
   when: manual
   script:
-    - 'scp -P 27 -r dist/* rainer@nextos.proxiss-srv1.de:/home/docker/pn7/countmatic/'
+    - 'scp -P $SCP_PORT -r dist/* $SCP_TARGET'
   only:
   - master
