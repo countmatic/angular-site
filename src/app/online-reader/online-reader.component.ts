@@ -7,6 +7,9 @@ import {CounterModel} from '../counter-model';
 import {CountmaticApiService} from '../countmatic-api.service';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 
+/*
+ Online reader for counter tokens with some memorial comfort.
+ */
 @Component({
   selector: 'app-online-reader',
   providers: [CountmaticApiService],
@@ -15,9 +18,11 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 })
 export class OnlineReaderComponent implements OnInit {
 
+  // feedback of last action presented to the user
   feedback = 'Enter token';
+  // current input content
   token = '';
-
+  // current reading of the counters for this.token
   countersModel: CounterModel[] = [];
 
   constructor(private countmaticApiService: CountmaticApiService,
@@ -25,6 +30,9 @@ export class OnlineReaderComponent implements OnInit {
     console.log("Hello OnlineReaderComponent constructor");
   }
 
+  /*
+  Map error codes to informational text for the user
+   */
   private err2Text(status: number): string {
     let rc = 'undefined';
     switch (status) {
@@ -45,7 +53,10 @@ export class OnlineReaderComponent implements OnInit {
     return rc;
   }
 
-
+  /*
+   Respond to token changes from the input form by requesting content from the backend.
+   Feed new input to the table's model - or show error msg
+   */
   onTokenChanged(token: string) {
     console.log("Hello OnlineReaderComponent onTokenChanged");
     this.token = token;
@@ -60,6 +71,9 @@ export class OnlineReaderComponent implements OnInit {
       });
   }
 
+  /*
+  Check for query param "token" - if there's one, use it immediately.
+   */
   ngOnInit() {
     console.log("Hello OnlineReaderComponent ngOnInit");
     let token = null;

@@ -5,6 +5,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
+/*
+ Simple form for token input and re-use from localStorage
+ */
 @Component({
   selector: 'app-token-input-form',
   templateUrl: './token-input-form.component.html',
@@ -12,16 +15,22 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class TokenInputFormComponent implements OnInit {
 
+  // Current input field value
   token = '';
+  // model for the store checkbox
   store = false;
+  // re-useable tokens from history
   oldTokens: string[];
 
+  // Event for changing input
   @Output() onTokenChanged = new EventEmitter<string>();
 
   constructor(private activatedRoute: ActivatedRoute) {
     console.log("Hello TokenInputFormComponent constructor");
   }
 
+  // Check for a token in the query to copy it into the input field if present
+  // and check for re-usable tokens from the localStorage
   ngOnInit() {
     console.log("Hello TokenInputFormComponent ngOnInit");
     let oldTokenStore = localStorage.getItem('oldTokens');
@@ -48,10 +57,12 @@ export class TokenInputFormComponent implements OnInit {
     this.token = t;
   }
 
+  // submit token and opt. store in localHist
   onSubmit() {
     console.log("Hello TokenInputFormComponent onSubmit");
     if (this.store) {
       console.log("TokenInputFormComponent storing input");
+      // first-in that token then slice to have a max of ten tokens in history
       let n = this.oldTokens.unshift(this.token);
       if (n > 10) {
         this.oldTokens = this.oldTokens.slice(0, 9);

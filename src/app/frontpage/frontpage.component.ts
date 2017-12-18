@@ -4,6 +4,9 @@
 */
 import {Component, OnInit} from '@angular/core';
 
+/*
+ Bunch of static html code
+ */
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',

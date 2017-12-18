@@ -16,6 +16,7 @@ import {CurrentReadingsTableComponent} from './current-readings-table/current-re
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
+// use the angular router to get correct URIs
 const appRoutes: Routes = [
   {path: 'online-reader', component: OnlineReaderComponent},
   {
