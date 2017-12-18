@@ -1,5 +1,11 @@
 # CmWebsite
 
+This is the code for the angular spa-website of [countmatic.io](https://countmatic.io).
+
+## About countmatic
+
+countmatic was written to provide a reliable counter as webservice.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.8.
 
 ## Development server
