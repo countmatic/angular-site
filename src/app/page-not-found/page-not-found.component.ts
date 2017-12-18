@@ -1,3 +1,7 @@
+/*
+ Copyright (c) Rainer Feike, 2017. Licensed under the MIT License.
+ See LICENSE file in the project root for full license information.
+*/
 import {Component, OnInit} from '@angular/core';
 
 @Component({
@@ -8,6 +12,7 @@ import {Component, OnInit} from '@angular/core';
 export class PageNotFoundComponent implements OnInit {
 
   constructor() {
+    // TODO: fill that with content
   }
 
   ngOnInit() {

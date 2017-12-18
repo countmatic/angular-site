@@ -1,3 +1,7 @@
+/*
+ Copyright (c) Rainer Feike, 2017. Licensed under the MIT License.
+ See LICENSE file in the project root for full license information.
+*/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
