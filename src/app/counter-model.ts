@@ -4,7 +4,8 @@
 */
 export class CounterModel {
   constructor(public name: string,
-              public count: number) {
+              public count: number,
+              public modified: string) {
   }
 
 }
